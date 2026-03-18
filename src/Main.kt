@@ -4,7 +4,7 @@
  * ---------------------------------------------------------------------
  * Project Name:   PROJECT NAME HERE
  * Project Author: PROJECT AUTHOR HERE
- * GitHub Repo:    GITHUB REPO URL HERE
+ * GitHub Repo:    https://github.com/waimea-ranorton/kotlin-lvl2-game
  * ---------------------------------------------------------------------
  * Notes:
  * PROJECT NOTES HERE
