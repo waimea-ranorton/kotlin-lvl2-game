@@ -1,3 +1,5 @@
+import java.security.Principal
+
 /**
  * =====================================================================
  * Programming Project for NCEA Level 2, Standard 91896
@@ -12,18 +14,41 @@
  */
 
 
-
+val board = mutableListOf<String>()
 fun main() {
     println("=========================".cyan())
     println("\uD83D\uDCA3    CHAIN REACTION   \uD83D\uDCA3".blue())
     println("=========================".cyan())
     println("")
+
+    createboard()
+    while(true) {
+        showboard()
+        break
+    }
 }
 
-while(true)
-    gameboard()
 
-
-fun gameboard(){
-    println("+------------+")
+fun createboard() {
+    repeat(12) {
+        board.add("")
+    }
 }
+
+fun showboard() {
+    //top
+
+    println("")
+    print("┍".cyan())
+    print("━━━━━━━━━━━┳".repeat(board.size).cyan())
+
+    for (i in 0..<board.size) {
+        print(" ${board[i].padEnd(12)} ")
+    }
+
+    //bottom
+    println(" ")
+    println("┕━━━━━━━━━━━┻".repeat(board.size).cyan())
+
+}
+
