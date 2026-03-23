@@ -47,8 +47,9 @@ fun showboard() {
     }
 
     //bottom
-    println(" ")
-    println("┕━━━━━━━━━━━┻".repeat(board.size).cyan())
+    println("")
+    print("┕")
+    println("━━━━━━━━━━━┻".repeat(board.size).cyan())
 
 }
 
