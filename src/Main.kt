@@ -23,26 +23,24 @@ fun main() {
     println("")
 
 
-//getting player names
-fun player1() {
+//getting player names--------------------------------------------------------------------------------------------------
     var player1: String?
     while (true) {
         println("Hello Players")
         println("Insert Player 1 name ")
         player1 = readlnOrNull()
-        if (player1 != null) && player1.isNotBlank()) break
+        if (player1 != null && player1.isNotBlank()) break
     }
-}
 
-fun player2() {
     var player2: String?
     while (true) {
         println("Hello Players")
         println("Insert Player 2 name ")
         player2 = readlnOrNull()
-        if (player2 != null) && player2.isNotBlank()) break
+        if (player2 != null && player2.isNotBlank()) break
     }
-}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 
 //putting the gameboard up
@@ -63,8 +61,8 @@ fun createboard() {
 
 //board
 fun showboard() {
-    //top
 
+    //top
     println("")
     print("┍".cyan())
     print("━━━━━━━━━━━┳".repeat(board.size).cyan())
