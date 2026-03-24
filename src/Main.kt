@@ -16,11 +16,36 @@ import java.security.Principal
 
 val board = mutableListOf<String>()
 fun main() {
+    //header
     println("=========================".cyan())
     println("\uD83D\uDCA3    CHAIN REACTION   \uD83D\uDCA3".blue())
     println("=========================".cyan())
     println("")
 
+
+//getting player names
+fun player1() {
+    var player1: String?
+    while (true) {
+        println("Hello Players")
+        println("Insert Player 1 name ")
+        player1 = readlnOrNull()
+        if (player1 != null) && player1.isNotBlank()) break
+    }
+}
+
+fun player2() {
+    var player2: String?
+    while (true) {
+        println("Hello Players")
+        println("Insert Player 2 name ")
+        player2 = readlnOrNull()
+        if (player2 != null) && player2.isNotBlank()) break
+    }
+}
+
+
+//putting the gameboard up
     createboard()
     while(true) {
         showboard()
@@ -28,13 +53,15 @@ fun main() {
     }
 }
 
-
+//----------------------------------------------------------------------------------------------------------------------
+//board
 fun createboard() {
     repeat(12) {
         board.add("")
     }
 }
 
+//board
 fun showboard() {
     //top
 
@@ -53,3 +80,23 @@ fun showboard() {
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
+//getting player move x2
+fun placebomb(): Int {
+    while (true) {
+        print("Player 1 Enter sqaure")
+    }
+}
+//
+//fun updateboard(): {
+//
+//}
+//
+//fun updatepoints(): {
+//
+//}
+//
+//fun checkforwin(): {
+//
+//}
