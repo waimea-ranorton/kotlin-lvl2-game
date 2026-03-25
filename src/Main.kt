@@ -14,31 +14,79 @@ import java.security.Principal
  */
 
 val board = mutableListOf<String>()
+var player1 = "P1"
+var player2 = "P2"
+
 fun main() {
-//header----------------------------------------------------------------------------------------------------------------
+    showIntro()
+    getPlayerNames()
+
+//Placing bombs-----------------------------------------------------------------------------------------------------------------
+//asking player where
+
+    createboard()
+    while (true) {
+        showboard()
+
+    while (true) {
+        println("$player1 Enter square: ")
+        println("Options")
+        println("1,2,3,4,5,6,7,8,9,10,11,12")
+        var location = readlnOrNull()?.toIntOrNull()
+        if (location != null && location in 1..12)
+            addCounter()
+
+    }
+
+
+//
+//    for (i in 0..<board.size) {
+//        if (board[i] == "") {
+//            board[i] = location
+//            break
+//        }
+//    }
+
+        // Check for a win -> break
+
+        // Switch pplayer
+
+    }
+}
+
+
+fun showIntro() {
     println("=========================".cyan())
     println("\uD83D\uDCA3    CHAIN REACTION   \uD83D\uDCA3".blue())
     println("=========================".cyan())
     println("")
-
-//getting player names--------------------------------------------------------------------------------------------------
-
-    getNames()
-
-//putting the gameboard up----------------------------------------------------------------------------------------------
-    createboard()
+}
+//----------------------------------------------------------------------------------------------------------------------
+fun getPlayerNames() {
     while (true) {
-        showboard()
-        break
+        println("Hello Players")
+        println("Insert Player 1 name: ")
+        val answer = readlnOrNull()
+        if (!answer.isNullOrBlank()) {
+            player1 = answer
+            break
+        }
     }
 
-//Players place bombs---------------------------------------------------------------------------------------------------
-    repeat(times = 12) {
-        placebomb()
+    while (true) {
+        println("Insert Player 2 name: ")
+        val player2 = readlnOrNull()
+        if (player2 != null && player2.isNotBlank()) break
     }
 
 }
-
+//----------------------------------------------------------------------------------------------------------------------
+fun addCounter() {
+    while (true) {
+        println
+    }
+}
+//----------------------------------------------------------------------------------------------------------------------
 
 //board
 fun createboard() {
@@ -65,50 +113,5 @@ fun showboard() {
     println("━━━━━━━━━━━┻".repeat(board.size).cyan())
 
 }
+//----------------------------------------------------------------------------------------------------------------------
 
-
-//Get names funcation--------------------------------------------------------------------------------------------------------------------
-
-
-fun getNames() {
-    var player1: String?
-    while (true) {
-        println("Hello Players")
-        println("Insert Player 1 name: ")
-        player1 = readlnOrNull()
-        if (player1 != null && player1.isNotBlank()) break
-    }
-
-    var player2: String?
-    while (true) {
-        println("Insert Player 2 name: ")
-        player2 = readlnOrNull()
-        if (player2 != null && player2.isNotBlank()) break
-    }
-}
-
-//Placebomb fnction-----------------------------------------------------------------------------------------------------------------
-fun placebomb() {
-    var location: Int?
-    while (true) {
-        println(" $player1 Enter square: ")
-        println("Options")
-        println("1,2,3,4,5,6,7,8,9,10,11,12")
-        location = readlnOrNull()?.toIntOrNull()
-        if (location != null && location in 1..12) break
-    }
-}
-
-
-//
-//fun updateboard(): {
-//
-//}
-//
-//fun updatepoints(): {
-//
-//}
-//
-//fun checkforwin(): {
-//
-//}
