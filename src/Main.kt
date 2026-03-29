@@ -25,18 +25,26 @@ fun main() {
 //asking player where
 
     createboard()
+
     while (true) {
         showboard()
 
-    while (true) {
         println("$player1 Enter square: ")
         println("Options")
         println("1,2,3,4,5,6,7,8,9,10,11,12")
-        var location = readlnOrNull()?.toIntOrNull()
-        if (location != null && location in 1..12)
-            addCounter()
 
+        val location = readlnOrNull()?.toIntOrNull()
+
+        if (location != null && location in 1..12) return
+
+        for (i in 0..<board.size) {
+            if (board[i] == "") {
+                board[i] = location.toString()
+                break
+            }
+        }
     }
+
 
 
 //
@@ -52,7 +60,7 @@ fun main() {
         // Switch pplayer
 
     }
-}
+
 
 
 fun showIntro() {
@@ -81,11 +89,8 @@ fun getPlayerNames() {
 
 }
 //----------------------------------------------------------------------------------------------------------------------
-fun addCounter() {
-    while (true) {
-        println
-    }
-}
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 //board
