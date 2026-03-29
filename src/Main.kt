@@ -32,22 +32,19 @@ fun main() {
         println("$player1 Enter square: ")
         println("Options")
         println("1,2,3,4,5,6,7,8,9,10,11,12")
+        val location = readln()
 
-        val location = readlnOrNull()?.toIntOrNull()
+        if (location.isNullOrBlank()) return
 
-        if (location != null && location in 1..12) return
-
-        for (i in 0..<board.size) {
+        for (i in 0..<board.size - 1) {
             if (board[i] == "") {
-                board[i] = location.toString()
+                board[i] = location
                 break
             }
         }
     }
+}
 
-
-
-//
 //    for (i in 0..<board.size) {
 //        if (board[i] == "") {
 //            board[i] = location
@@ -59,7 +56,7 @@ fun main() {
 
         // Switch pplayer
 
-    }
+
 
 
 
@@ -96,7 +93,7 @@ fun getPlayerNames() {
 //board
 fun createboard() {
     repeat(12) {
-        board.add("")
+        board.add("0")
     }
 }
 
@@ -111,6 +108,8 @@ fun showboard() {
     for (i in 0..<board.size) {
         print(" ${board[i].padEnd(12)} ")
     }
+
+    println("|")
 
     //bottom
     println("")
