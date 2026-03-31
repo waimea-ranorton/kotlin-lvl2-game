@@ -29,10 +29,10 @@ fun main() {
     while (true) {
         showboard()
 
+        println()
         println("$player1 Enter square: ")
         println("Options")
         println("1,2,3,4,5,6,7,8,9,10,11,12")
-        println()
         val location = readln()
 
         if (location.isNullOrBlank()) return
@@ -105,23 +105,25 @@ fun createboard() {
 //board
 fun showboard() {
 
+    //numbers
     for (i in 1..board.size) {
-        print("$i")
+        print("$i".padEnd(6).padStart(12))
     }
 
     //top
     println()
-    print("┍".cyan())
-    println("━━━━━━━━━━━┳".repeat(board.size).cyan())
+    print("┏".cyan())
+    println("━━━━━━━━━━━┳".repeat(board.size-1).cyan() + ("━━━━━━━━━━━┓").cyan())
 
+    //counters
     for (i in 0..<board.size) {
-        print("|".cyan() + "${board[i].padEnd(5).padStart(10)} ")
+        print("┃".cyan() + "${board[i].padEnd(5).padStart(10)} ")
     }
-    println("|".cyan())
+    println("┃".cyan())
 
     //bottom
-    print("┕".cyan())
-    println("━━━━━━━━━━━┻".repeat(board.size).cyan())
+    print("┗".cyan())
+    println("━━━━━━━━━━━┻".repeat(board.size-1).cyan() + ("━━━━━━━━━━━┛").cyan())
 
 }
 //----------------------------------------------------------------------------------------------------------------------
