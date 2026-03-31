@@ -32,18 +32,20 @@ fun main() {
         println("$player1 Enter square: ")
         println("Options")
         println("1,2,3,4,5,6,7,8,9,10,11,12")
+        println()
         val location = readln()
 
         if (location.isNullOrBlank()) return
 
-        for (i in 0..<board.size - 1) {
-            if (board[i] == "") {
+        for (i in 0..<board.size) {
+            if (board[i] == "x") {
                 board[i] = location
                 break
             }
         }
     }
 }
+
 
 //    for (i in 0..<board.size) {
 //        if (board[i] == "") {
@@ -85,31 +87,39 @@ fun getPlayerNames() {
     }
 
 }
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
 //board
+
 fun createboard() {
+    println("")
     repeat(12) {
-        board.add("0")
+        board.add("X")
     }
 }
 
 //board
 fun showboard() {
 
-    //top
-    println("")
-    print("┍".cyan())
-    print("━━━━━━━━━━━┳".repeat(board.size).cyan())
-
-    for (i in 0..<board.size) {
-        print(" ${board[i].padEnd(12)} ")
+    for (i in 1..board.size) {
+        print("$i")
     }
 
-    println("|")
+    //top
+    println()
+    print("┍".cyan())
+    print("━━━━━━━━━━━┳".repeat(board.size).cyan())
+    println("")
+
+    for (i in 0..<board.size) {
+        print(" ${board[i].padEnd(11)} ")
+    }
+
+    print("|".cyan())
 
     //bottom
     println("")
