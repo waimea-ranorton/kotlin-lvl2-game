@@ -19,7 +19,7 @@ var player2 = "P2"
 
 fun main() {
     showIntro()
-    getPlayerNames()
+//    getPlayerNames()
 
 //Placing bombs-----------------------------------------------------------------------------------------------------------------
 //asking player where
@@ -112,18 +112,15 @@ fun showboard() {
     //top
     println()
     print("┍".cyan())
-    print("━━━━━━━━━━━┳".repeat(board.size).cyan())
-    println("")
+    println("━━━━━━━━━━━┳".repeat(board.size).cyan())
 
     for (i in 0..<board.size) {
-        print(" ${board[i].padEnd(11)} ")
+        print("|".cyan() + "${board[i].padEnd(5).padStart(10)} ")
     }
-
-    print("|".cyan())
+    println("|".cyan())
 
     //bottom
-    println("")
-    print("┕")
+    print("┕".cyan())
     println("━━━━━━━━━━━┻".repeat(board.size).cyan())
 
 }
