@@ -24,11 +24,10 @@ fun main() {
 
     while (true) {
         showboard()
+        placeCounter()
         break
-
     }
 
-    placeCounter() //fix placement!!
 
 }
 
@@ -60,32 +59,13 @@ fun getPlayerNames() {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
-fun placeCounter(){
-    println()
-    println("$player1 Enter square: ")
-    println("Options")
-    println("1,2,3,4,5,6,7,8,9,10,11,12")
-    val location = readln()
-
-    if (location.isNullOrBlank()) return
-
-    for (i in 0..<board.size) {
-        if (board[i] == "x") {
-            board[i] = location
-            break
-        }
-    }
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------
 
 //board
 
 fun createboard() {
     println("")
+    //X is placeholder, will later replace with "", this is sections on board
     repeat(12) {
         board.add("X")
     }
@@ -114,7 +94,22 @@ fun showboard() {
     print("┗".cyan())
     println("━━━━━━━━━━━┻".repeat(board.size-1).cyan() + ("━━━━━━━━━━━┛").cyan())
 
-
 }
 //----------------------------------------------------------------------------------------------------------------------
+fun placeCounter() {
+    //geting user input
+
+    while (true) {
+        println("$player1 Enter square: ")
+        println("Options")
+        println("1,2,3,4,5,6,7,8,9,10,11,12")
+        //using input to get where next counter is located
+        var location = readlnOrNull()
+
+        //making sure user input valid
+        if (location != null && location in "123456789101112") break
+    }
+}
+
+    //place counter in users given location
 
