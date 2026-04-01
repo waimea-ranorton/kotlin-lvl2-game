@@ -112,4 +112,5 @@ fun placeCounter() {
 }
 
     //place counter in users given location
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
