@@ -24,10 +24,11 @@ fun main() {
 
     while (true) {
         showboard()
-        placeCounter()
+        getPlacement()
         break
     }
-
+//loop that is
+    //user imput>move>win?????>ifnot>loop>if>break and congrates
 
 }
 
@@ -96,7 +97,7 @@ fun showboard() {
 
 }
 //----------------------------------------------------------------------------------------------------------------------
-fun placeCounter() {
+fun getPlacement() {
     //geting user input
 
     while (true) {
@@ -108,9 +109,13 @@ fun placeCounter() {
 
         //making sure user input valid
         if (location != null && location in "123456789101112") break
+
+        else println("Invalid input"); return
+
     }
 }
 
+
     //place counter in users given location
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+//I need to assign the number values to the X's
