@@ -17,6 +17,10 @@ val board = mutableListOf<String>()
 var player1 = "P1"
 var player2 = "P2"
 
+//main game loop
+//Players insert names, board is shown, player1 places counter, points updated, player 2 places counter, points updated
+// so on until a win or lose.
+
 fun main() {
     showIntro()
     getPlayerNames()
@@ -24,15 +28,24 @@ fun main() {
 
     while (true) {
         showboard()
-        getPlacement()
-        break
-    }
-//loop that is
-    //user imput>move>win?????>ifnot>loop>if>break and congrates
+        //loop, broken if player win or lose
+        while (true) {
+            println("$player1 Enter square: ")
+            getPlacement("■")
+            showboard()
+            checkPoints()
 
-}
+            println("$player2 Enter square: ")
+            getPlacement("○")
+            showboard()
+            checkPoints()
+
+        }
+    }
+}//work out problem with coloring counters
 
 //----------------------------------------------------------------------------------------------------------------------
+//This function creates a decorative title
 fun showIntro() {
     println("=========================".cyan())
     println("\uD83D\uDCA3    CHAIN REACTION   \uD83D\uDCA3".blue())
@@ -41,10 +54,11 @@ fun showIntro() {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+//This function asks both players for usernames that will be used though out the game
 fun getPlayerNames() {
     while (true) {
         println("Hello Players")
-        println("Insert Player 1 name: ")
+        println("Insert Player 1 name: ".green())
         val answer = readlnOrNull()
         if (!answer.isNullOrBlank()) {
             player1 = answer
@@ -53,26 +67,29 @@ fun getPlayerNames() {
     }
 
     while (true) {
-        println("Insert Player 2 name: ")
-        val player2 = readlnOrNull()
-        if (player2 != null && player2.isNotBlank()) break
-    }
+        println("Insert Player 2 name: ".blue())
+        val answer2 = readlnOrNull()
+        if (!answer2.isNullOrBlank()) {
+            player2 = answer2
+            break
+        }
 
+    }
 }
 
 //-----------------------------------------------------------------------------------------------------------
 
-//board
+//This function creates the counters
+//each " " is a possible loaction for a counter
 
 fun createboard() {
-    println("")
-    //X is placeholder, will later replace with "", this is sections on board
+    println(" ")
     repeat(12) {
-        board.add("X")
+        board.add(" ")
     }
 }
 
-//board
+//This function creates the structure of the board, it helps the user understand the game
 fun showboard() {
 
     //numbers
@@ -97,25 +114,56 @@ fun showboard() {
 
 }
 //----------------------------------------------------------------------------------------------------------------------
-fun getPlacement() {
-    //geting user input
+//This function gets the users position for their counter, it understands if the users input is valid or not and reacts
+//accordingly.
+fun getPlacement(counter: String) {
+
+    var location: Int?
 
     while (true) {
-        println("$player1 Enter square: ")
         println("Options")
         println("1,2,3,4,5,6,7,8,9,10,11,12")
         //using input to get where next counter is located
-        var location = readlnOrNull()
+        location = readlnOrNull()?.toIntOrNull()
 
-        //making sure user input valid
-        if (location != null && location in "123456789101112") break
+
+        if (location != null && location in 1..12) break
 
         else println("Invalid input"); return
 
     }
+
+    board[location!! - 1] = counter
+
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+//Updating player points and checking for win
+fun checkPoints(){
 
-    //place counter in users given location
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    var p1Points: Int?
+    var p2Points: Int?
+
+//figure out giving points
+
+    if (p1Points != null && p1Points <= 10) p1Win()
+
+    if (p2Points != null && p1Points <= 10) p2Win()
+
+
+
+    }
+
+//----------------------------------------------------------------------------------------------------------------------
+//If a player has 10 points or more than the game ends and they are congratulated
+fun p1Win(){
+    println("Congratulations $player1")
+}
+
+fun p2Win(){
+    println("Congratulations $player2")
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+//place counter in users given location
 //I need to assign the number values to the X's
