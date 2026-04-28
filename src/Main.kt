@@ -42,7 +42,11 @@ fun main() {
 
         }
     }
-}//work out problem with coloring counters
+}
+
+//work out problem with coloring counters
+//work out how to if either win function is called break the loop
+//work out how to if win is not called and board is filled tie
 
 //----------------------------------------------------------------------------------------------------------------------
 //This function creates a decorative title
@@ -141,29 +145,33 @@ fun getPlacement(counter: String) {
 //Updating player points and checking for win
 fun checkPoints(){
 
-    var p1Points: Int?
-    var p2Points: Int?
-
-//figure out giving points
-
-    if (p1Points != null && p1Points <= 10) p1Win()
-
-    if (p2Points != null && p1Points <= 10) p2Win()
+    var p1Points: Int
+    var p2Points: Int
 
 
+    //updating points here ++
+    //needs to be along the lines of if counters = 123... so on than points = amount of counters
+
+    if (p1Points <= 10) p1Win()
+    else {}
+
+    if (p1Points <= 10) p2Win()
+    else {}
 
     }
 
 //----------------------------------------------------------------------------------------------------------------------
 //If a player has 10 points or more than the game ends and they are congratulated
 fun p1Win(){
-    println("Congratulations $player1")
+    println("Congratulations $player1 you are the winner")
 }
 
 fun p2Win(){
-    println("Congratulations $player2")
+    println("Congratulations $player2 you are the winner")
 }
 //----------------------------------------------------------------------------------------------------------------------
 
-//place counter in users given location
-//I need to assign the number values to the X's
+
+fun tie(){
+    //make function that if whole board is filled player tie
+}
