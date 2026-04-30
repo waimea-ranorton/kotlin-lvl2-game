@@ -65,7 +65,7 @@ fun getPlayerNames() {
         println("Insert Player 1 name: ".green())
         val answer = readlnOrNull()
         if (!answer.isNullOrBlank()) {
-            player1 = answer
+            player1 = answer.green()
             break
         }
     }
@@ -74,7 +74,7 @@ fun getPlayerNames() {
         println("Insert Player 2 name: ".blue())
         val answer2 = readlnOrNull()
         if (!answer2.isNullOrBlank()) {
-            player2 = answer2
+            player2 = answer2.blue()
             break
         }
 
@@ -133,11 +133,23 @@ fun getPlacement(counter: String) {
 
         if (location != null && location in 1..12) break
 
+        //if location has counter in than player cannot place counter there
+
         else println("Invalid input"); return
 
     }
 
     board[location!! - 1] = counter
+        
+
+
+//I need to code to kinda be able to 'see' the baord
+
+//I need to make it so when a counter is placed the board is aware of where it is,
+//This is so I can
+//-Remove counters when player has put at least 3 in a row
+//-Not allow a player to defuse anothers bomb
+//-Not allow a player to place a counter on a taken location
 
 }
 
@@ -152,11 +164,11 @@ fun checkPoints(){
     //updating points here ++
     //needs to be along the lines of if counters = 123... so on than points = amount of counters
 
-    if (p1Points <= 10) p1Win()
-    else {}
-
-    if (p1Points <= 10) p2Win()
-    else {}
+//    if (p1Points <= 10) p1Win()
+//    else {}
+//
+//    if (p1Points <= 10) p2Win()
+//    else {}
 
     }
 
