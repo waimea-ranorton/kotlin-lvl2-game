@@ -23,6 +23,7 @@ var player2 = "P2"
 
 fun main() {
     showIntro()
+    showRules()
     getPlayerNames()
     createboard()
 
@@ -33,12 +34,12 @@ fun main() {
             println("$player1 Enter square: ")
             getPlacement("■")
             showboard()
-            checkPoints()
+            checkGame()
 
             println("$player2 Enter square: ")
             getPlacement("○")
             showboard()
-            checkPoints()
+            checkGame()
 
         }
     }
@@ -55,8 +56,33 @@ fun showIntro() {
     println("\uD83D\uDCA3    CHAIN REACTION   \uD83D\uDCA3".blue())
     println("=========================".cyan())
     println("")
+
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+fun showRules() {
+    while (true) {
+        println("See game rules?")
+        println("Type Y for rules, Press Enter to continue")
+        println("")
+        val answer = readlnOrNull()
+        if (answer == "Y") {
+            println("")
+            println(
+                "- Players take turns, You may not skip your turn\n" +
+                        "- On your turn you must place one of your bombs on an empty square, but ...\n" +
+                        "- You cannot place your bomb directly between two opponent bombs since it would immediately be 'defused' (see the defuse rule below)\n" +
+                        "- After placing, the following rules apply (in order):\n" +
+                        "- Defuse rule:  if any opponent bomb now has one of your bombs on each side, it is 'defused' and removed from the board (note: two bombs can be defused in one go)\n" +
+                        "- Chain reaction rule: if your bomb creates an unbroken chain of 3 or more of your own bombs, the entire chain 'explodes' - all bombs in the chain are removed and you score points equal to the length of the chain\n" +
+                        "- The first player to reach 10 points wins\n"
+            )
+            break
+        }
+        else
+            break
+    }
+}
 //----------------------------------------------------------------------------------------------------------------------
 //This function asks both players for usernames that will be used though out the game
 fun getPlayerNames() {
@@ -127,6 +153,8 @@ fun getPlacement(counter: String) {
     while (true) {
         println("Options")
         println("1,2,3,4,5,6,7,8,9,10,11,12")
+        //change this so that optiohns change?
+
         //using input to get where next counter is located
         location = readlnOrNull()?.toIntOrNull()
 
@@ -140,50 +168,32 @@ fun getPlacement(counter: String) {
     }
 
     board[location!! - 1] = counter
-        
-
-
-//I need to code to kinda be able to 'see' the baord
-
-//I need to make it so when a counter is placed the board is aware of where it is,
-//This is so I can
-//-Remove counters when player has put at least 3 in a row
-//-Not allow a player to defuse anothers bomb
-//-Not allow a player to place a counter on a taken location
 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //Updating player points and checking for win
-fun checkPoints(){
+fun checkGame() {
 
     var p1Points: Int
     var p2Points: Int
 
-
     //updating points here ++
-    //needs to be along the lines of if counters = 123... so on than points = amount of counters
 
-//    if (p1Points <= 10) p1Win()
-//    else {}
-//
-//    if (p1Points <= 10) p2Win()
-//    else {}
 
+    //----------------------------------------------------------------------------------------------------------------------
+//If a player has 10 points or more than the game ends and they are congratulated
+    fun p1Win() {
+        println("Congratulations $player1 you are the winner")
     }
 
-//----------------------------------------------------------------------------------------------------------------------
-//If a player has 10 points or more than the game ends and they are congratulated
-fun p1Win(){
-    println("Congratulations $player1 you are the winner")
-}
-
-fun p2Win(){
-    println("Congratulations $player2 you are the winner")
-}
+    fun p2Win() {
+        println("Congratulations $player2 you are the winner")
+    }
 //----------------------------------------------------------------------------------------------------------------------
 
 
-fun tie(){
-    //make function that if whole board is filled player tie
+    fun tie() {
+        //make function that if whole board is filled player tie
+    }
 }
