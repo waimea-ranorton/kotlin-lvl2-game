@@ -144,8 +144,9 @@ fun showboard() {
 
 }
 //----------------------------------------------------------------------------------------------------------------------
-//This function gets the users position for their counter, it understands if the users input is valid or not and reacts
-//accordingly.
+//We need to ask the player where they want to place their counter, if they do this it needs to be placed, here is the
+//fumction that does that.
+
 fun getPlacement(counter: String) {
 
     var location: Int?
@@ -153,15 +154,10 @@ fun getPlacement(counter: String) {
     while (true) {
         println("Options")
         println("1,2,3,4,5,6,7,8,9,10,11,12")
-        //change this so that optiohns change?
 
-        //using input to get where next counter is located
         location = readlnOrNull()?.toIntOrNull()
 
-
         if (location != null && location in 1..12) break
-
-        //if location has counter in than player cannot place counter there
 
         else println("Invalid input"); return
 
@@ -172,7 +168,7 @@ fun getPlacement(counter: String) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//Updating player points and checking for win
+//Updating player points, checking for end of game (win/tie)
 fun checkGame() {
 
     var p1Points: Int
@@ -180,8 +176,7 @@ fun checkGame() {
 
     //updating points here ++
 
-
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 //If a player has 10 points or more than the game ends and they are congratulated
     fun p1Win() {
         println("Congratulations $player1 you are the winner")
