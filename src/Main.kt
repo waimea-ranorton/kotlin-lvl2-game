@@ -17,6 +17,9 @@ val board = mutableListOf<String>()
 var player1 = "P1"
 var player2 = "P2"
 
+var p1Points: Int = 0
+var p2Points: Int = 0
+
 //main game loop
 //Players insert names, board is shown, player1 places counter, points updated, player 2 places counter, points updated
 // so on until a win or lose.
@@ -34,12 +37,14 @@ fun main() {
             println("$player1 Enter square: ")
             getPlacement("■")
             showboard()
-            checkGame()
+            checkChain()
+            showboard()
 
             println("$player2 Enter square: ")
             getPlacement("○")
             showboard()
-            checkGame()
+            checkChain()
+            showboard()
 
         }
     }
@@ -63,7 +68,7 @@ fun showIntro() {
 fun showRules() {
     while (true) {
         println("See game rules?")
-        println("Type Y for rules, Press Enter to continue")
+        println("Type Y for rules, Press Enter to skip")
         println("")
         val answer = readlnOrNull()
         if (answer == "Y") {
@@ -114,9 +119,10 @@ fun getPlayerNames() {
 
 fun createboard() {
     println(" ")
-    repeat(12) {
+    repeat(6) {
         board.add(" ")
     }
+
 }
 
 //This function creates the structure of the board, it helps the user understand the game
@@ -168,21 +174,71 @@ fun getPlacement(counter: String) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//Updating player points, checking for end of game (win/tie)
-fun checkGame() {
+fun checkChain() {
+    //The code needs to check over the board, to see whether or not there are three or more of the same counter in a row
+//--------------------------------------
+    val EMPTY = " "
+    var currentChain = EMPTY
+    var chainCount = 0
+    var chainStart = 0
 
-    var p1Points: Int
-    var p2Points: Int
+//--------------------------------------
+    for (i in 0..<board.size) {
 
-    //updating points here ++
+//        println("Checking: $i...")
+
+        // Not already tracking a chain, or tracking a different player chain?
+        if (currentChain == EMPTY || board[i] != currentChain) {
+            // Start tracking it
+            currentChain = board[i]
+            chainCount = 1
+            chainStart = i
+        }
+        // Already tracking a chain
+        else {
+            // So just count
+            chainCount++
+            if (chainCount >= 3) {
+                boom(chainStart, chainCount)
+            }
+        }
+    }
+}
+
+fun boom(start: Int, length: Int) {
+    //remove counters and add chainCount call these points
+    println("BOOM!!! $start, $length")
+
+
+    //checking which player counters apply to
+
+    if (board[start] == "■") {
+        println("player1")
+        //adding player points for each counter (length)
+        p1Points = length
+    }
+
+    else {
+        println("player2")
+        p2Points += length
+    }
+
+    for (i in start ..<(start + length) ) {
+        board[i] = " "
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
 //If a player has 10 points or more than the game ends and they are congratulated
     fun p1Win() {
+        if (p1Points >= 10)
         println("Congratulations $player1 you are the winner")
     }
 
     fun p2Win() {
+        if (p2Points >= 10)
         println("Congratulations $player2 you are the winner")
     }
 //----------------------------------------------------------------------------------------------------------------------
@@ -191,4 +247,4 @@ fun checkGame() {
     fun tie() {
         //make function that if whole board is filled player tie
     }
-}
+
