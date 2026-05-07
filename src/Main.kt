@@ -52,10 +52,14 @@ fun main() {
             break
         }
 
-        if (p2Points >= 10) {
+        else if (p2Points >= 10) {
             println("Congratulations $player2 you are the winner")
             println("P1=$p1Points  P2=$p2Points")
             break
+        }
+
+        else {
+
         }
 
         }
