@@ -172,26 +172,17 @@ the result was as expected
 
 ---
 
+## Player win
 
+Testing what happens when player 1 wins
 
+### Test Data To Use
 
-
-
-
-
-## Example Test Name
-
-Example test description. Example test description.Example test description. Example test description.Example test description. Example test description.
-
-### Test Data Used
-
-Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data.
+I will get player 1 to 10 points
 
 ### Test Result
+![test12.gif](screenshots/test12.gif)
 
-![example.png](screenshots/example.png)
-
-Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result.
+the result was unexpected, the code needs fixing
 
 ---
-
