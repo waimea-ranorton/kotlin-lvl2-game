@@ -30,29 +30,35 @@ fun main() {
     getPlayerNames()
     createboard()
 
+    //loop, broken if player win or lose
     while (true) {
         showboard()
-        //loop, broken if player win or lose
-        while (true) {
-            println("$player1 Enter square: ")
-            getPlacement("■")
-            showboard()
-            checkChain()
-            showboard()
+        println("$player1 Enter square: ")
+        getPlacement("■")
+        showboard()
+        checkChain()
+        showboard()
 
-            println("$player2 Enter square: ")
-            getPlacement("○")
-            showboard()
-            checkChain()
-            showboard()
+        showboard()
+        println("$player2 Enter square: ")
+        getPlacement("○")
+        showboard()
+        checkChain()
+        showboard()
+
+    if (p1Points >= 10) {
+        println("Congratulations $player1 you are the winner")
+        println("P1=$p1Points  P2=$p2Points")
+        break }
+
+    if (p2Points >= 10) {
+        println("Congratulations $player2 you are the winner")
+        println("P1=$p1Points  P2=$p2Points")
+        break }
 
         }
     }
-}
 
-//work out problem with coloring counters
-//work out how to if either win function is called break the loop
-//work out how to if win is not called and board is filled tie
 
 //----------------------------------------------------------------------------------------------------------------------
 //This function creates a decorative title
@@ -84,6 +90,7 @@ fun showRules() {
             )
             break
         }
+
         else
             break
     }
@@ -119,7 +126,7 @@ fun getPlayerNames() {
 
 fun createboard() {
     println(" ")
-    repeat(6) {
+    repeat(12) {
         board.add(" ")
     }
 
@@ -209,18 +216,17 @@ fun boom(start: Int, length: Int) {
     //remove counters and add chainCount call these points
     println("BOOM!!! $start, $length")
 
-
     //checking which player counters apply to
 
     if (board[start] == "■") {
-        println("player1")
         //adding player points for each counter (length)
-        p1Points = length
+        p1Points += length
+        println("player1 points =$p1Points")
     }
 
     else {
-        println("player2")
         p2Points += length
+        println("player2 points =$p2Points")
     }
 
     for (i in start ..<(start + length) ) {
@@ -230,17 +236,6 @@ fun boom(start: Int, length: Int) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------------------------
-//If a player has 10 points or more than the game ends and they are congratulated
-    fun p1Win() {
-        if (p1Points >= 10)
-        println("Congratulations $player1 you are the winner")
-    }
-
-    fun p2Win() {
-        if (p2Points >= 10)
-        println("Congratulations $player2 you are the winner")
-    }
 //----------------------------------------------------------------------------------------------------------------------
 
 
