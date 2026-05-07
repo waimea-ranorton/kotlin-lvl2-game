@@ -46,15 +46,17 @@ fun main() {
         checkChain()
         showboard()
 
-    if (p1Points >= 10) {
-        println("Congratulations $player1 you are the winner")
-        println("P1=$p1Points  P2=$p2Points")
-        break }
+        if (p1Points >= 10) {
+            println("Congratulations $player1 you are the winner")
+            println("P1=$p1Points  P2=$p2Points")
+            break
+        }
 
-    if (p2Points >= 10) {
-        println("Congratulations $player2 you are the winner")
-        println("P1=$p1Points  P2=$p2Points")
-        break }
+        if (p2Points >= 10) {
+            println("Congratulations $player2 you are the winner")
+            println("P1=$p1Points  P2=$p2Points")
+            break
+        }
 
         }
     }
